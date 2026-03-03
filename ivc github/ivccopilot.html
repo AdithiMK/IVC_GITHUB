@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive To-Do List App</title>
+    <link rel="stylesheet" href="ivccopilot.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 My Tasks</h1>
+            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="Add a new task..." 
+                    autocomplete="off"
+                >
+                <button id="addBtn">Add</button>
+            </div>
+
+            <div class="input-options">
+                <!-- priority selection removed; all tasks default to medium -->
+                <select id="categorySelect">
+                    <option value="General">Category: General</option>
+                    <option value="Work">Category: Work</option>
+                    <option value="Personal">Category: Personal</option>
+                    <option value="Shopping">Category: Shopping</option>
+                    <option value="Health">Category: Health</option>
+                </select>
+
+                <div class="timer-inputs">
+                    <label>Timer:</label>
+                    <input 
+                        type="number" 
+                        id="hoursInput" 
+                        min="0" 
+                        max="23" 
+                        value="0"
+                        placeholder="Hours"
+                    >
+                    <span>:</span>
+                    <input 
+                        type="number" 
+                        id="minutesInput" 
+                        min="0" 
+                        max="59" 
+                        value="0"
+                        placeholder="Minutes"
+                    >
+                </div>
+
+                <div class="color-picker-wrapper">
+                    <label>Color:</label>
+                    <div class="color-options">
+                        <button class="color-btn" data-color="#ffc0e0" title="Light Pink" style="background-color: #ffc0e0;"></button>
+                        <button class="color-btn" data-color="#667eea" title="Purple" style="background-color: #667eea;"></button>
+                        <button class="color-btn" data-color="#4caf50" title="Green" style="background-color: #4caf50;"></button>
+                        <button class="color-btn" data-color="#ff6b6b" title="Red" style="background-color: #ff6b6b;"></button>
+                        <button class="color-btn" data-color="#ffa500" title="Orange" style="background-color: #ffa500;"></button>
+                        <button class="color-btn" id="customColorBtn" title="Custom Color">🎨</button>
+                    </div>
+                    <input 
+                        type="color" 
+                        id="colorInput" 
+                        value="#667eea"
+                        style="display: none;"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="search-filter">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search tasks..."
+            >
+            <select id="filterSelect">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="completedCount">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="pendingCount">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="overdueCount">0</div>
+                <div class="stat-label">Overdue</div>
+            </div>
+        </div>
+
+        <!-- priority-summary now only shows medium/default count -->
+        <div class="priority-summary">
+            <div class="priority-box medium">
+                <div class="priority-box-count" id="mediumCount">0</div>
+                <div class="priority-box-label">Priority</div>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <ul id="taskList"></ul>
+            
+            <div id="emptyState" class="empty-state">
+                <div class="empty-state-icon">✨</div>
+                <p>No tasks yet. Add one to get started!</p>
+            </div>
+        </div>
+
+        <button class="clear-all-btn" id="clearAllBtn" style="display: none;">Clear Completed Tasks</button>
+    </div>
+
+    <div class="timer-modal" id="timerModal" style="display: none;">
+        <div class="timer-box">
+            <div class="timer-task-name" id="timerTaskName"></div>
+            <div class="timer-display" id="timerDisplay">
+                <span id="timerHours">00</span>h&nbsp;:
+                <span id="timerMinutes">00</span>m
+            </div>
+            <button class="timer-stop-btn" id="timerStopBtn">Stop Timer</button>
+        </div>
+    </div>
+
+    <script src="ivccopilot.js"></script>
+</body>
+</html>
