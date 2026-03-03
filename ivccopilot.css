@@ -479,7 +479,7 @@ body.dark-mode .task-item.priority-low {
 
         .delete-btn:hover {
             background: var(--accent);
-            color: white;
+            color: white;}
 
 .edit-btn {
     background: var(--accent);
@@ -682,5 +682,4 @@ body.dark-mode .priority-box.low { background: #1e3d25; }
 }
 
 .timer-stop-btn:active {
-    transform: translateY(0);
-}
+    transform: translateY(0);}
